@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "craft-quest:item/ice_blade"
+    }
+}

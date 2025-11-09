@@ -1,0 +1,29 @@
+{
+    "item.craft-quest.obsidian_pickaxe": "Obsidian Pickaxe",
+    "item.craft-quest.ice_blade": "Icicle Blade",
+    "item.craft-quest.nether_star_pickaxe":"Nether-star Pickaxe",
+    "item.craft-quest.bitter_blade": "Bitter Blade",
+    "item.craft-quest.life_blade": "Life Blade",
+    "item.craft-quest.boom_pickaxe": "Boom Pickaxe",
+    "item.craft-quest.miner_pickaxe": "Miners Pickaxe",
+    "item.craft-quest.undead_sword": "Undead Sword",
+    "item.craft-quest.potion_chestplate": "Potion Chestplate",
+    "item.craft-quest.holy_sword": "Holy Sword",
+    "item.craft-quest.holy_helmet": "Holy Helmet",
+    "item.craft-quest.holy_chestplate": "Holy Chestplate",
+    "item.craft-quest.holy_leggings": "Holy Leggings",
+    "item.craft-quest.holy_boots": "Holy Boots",
+    "item.craft-quest.cloud_sword": "Cloud Sword",
+    "item.craft-quest.cloud_helmet": "Cloud Helmet",
+    "item.craft-quest.cloud_chestplate": "Cloud Chestplate",
+    "item.craft-quest.cloud_leggings": "Cloud Leggings",
+    "item.craft-quest.cloud_boots": "Cloud Boots",
+
+
+    "effect.craft-quest.atter_status_effect": "Status",
+
+    "death.attack.holy_damage": "%s was struckdown by Gods holy blade",
+    "death.attack.holy_damage.mob.item": "%s was struckdown by %s using gods holy blade",
+    "item.craft-quest.slime_boots": "Slime Boots"
+
+}
