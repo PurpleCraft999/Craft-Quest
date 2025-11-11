@@ -15,14 +15,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 // import purple.mod.CraftQuest;
 import purple.mod.ModItems;
-import purple.mod.items.armor.materials.SlimeArmorMaterial;
 
 
 public class SlimeBoots extends ArmorItem{
     float reverseFall = 0.0f;
     // boolean doBounce = true;
     public SlimeBoots(){
-        super(new SlimeArmorMaterial(), Type.BOOTS, new FabricItemSettings());
+        super(CraftQuestArmorMaterials.SLIME, Type.BOOTS, new FabricItemSettings());
     }
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {

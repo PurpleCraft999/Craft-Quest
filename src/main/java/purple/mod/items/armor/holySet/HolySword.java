@@ -20,6 +20,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import purple.mod.CraftQuest;
 import purple.mod.ModItems;
+import purple.mod.items.armor.CraftQuestToolMaterials;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 /*
@@ -31,7 +33,7 @@ import java.util.HashSet;
 public class HolySword extends SwordItem{
     ArrayList<Integer> enemies = new ArrayList<Integer>();
     public HolySword(){
-        super(new HolyToolMaterial(), -3, ModItems.SWORD_SPEED, new FabricItemSettings());
+        super(CraftQuestToolMaterials.HOLY, -3, ModItems.SWORD_SPEED, new FabricItemSettings());
     }
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {

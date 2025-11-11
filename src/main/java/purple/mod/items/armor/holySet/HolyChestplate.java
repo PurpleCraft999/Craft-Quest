@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import purple.mod.CraftQuest;
 import purple.mod.ModItems;
-import purple.mod.items.armor.materials.CraftQuestArmorMaterials;
+import purple.mod.items.armor.CraftQuestArmorMaterials;
 
 
 public class HolyChestplate extends ArmorItem{
