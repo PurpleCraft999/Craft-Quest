@@ -3,7 +3,7 @@
 	"package": "purple.mod.mixin.client",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-		"ExampleClientMixin"
+		"CloudArmorMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

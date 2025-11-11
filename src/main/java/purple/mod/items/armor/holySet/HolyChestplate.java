@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import purple.mod.CraftQuest;
 import purple.mod.ModItems;
-import purple.mod.items.armor.materials.HolyArmorMaterial;
+import purple.mod.items.armor.materials.CraftQuestArmorMaterials;
 
 
 public class HolyChestplate extends ArmorItem{
@@ -27,7 +27,7 @@ public class HolyChestplate extends ArmorItem{
         CraftQuest.CraftQuestEffectHandler.addEffect(HEALTH_UUID, EntityAttributes.GENERIC_MAX_HEALTH);
     }
     public HolyChestplate(){
-        super(HolyArmorMaterial.INSTANCE,Type.CHESTPLATE,new FabricItemSettings());
+        super(CraftQuestArmorMaterials.HOLY,Type.CHESTPLATE,new FabricItemSettings());
     }
 
     // UUID getHealthUUID() {

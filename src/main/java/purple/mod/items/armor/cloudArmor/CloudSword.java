@@ -6,6 +6,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
@@ -13,7 +14,9 @@ import purple.mod.ModItems;
 
 public class CloudSword extends SwordItem {
     public CloudSword(){
-        super(CloudArmorMaterial.INSTANCE,3, ModItems.SWORD_SPEED, new FabricItemSettings());
+
+        //TODO make it cloud material
+        super(ToolMaterials.DIAMOND,3, ModItems.SWORD_SPEED, new FabricItemSettings());
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {

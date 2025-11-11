@@ -12,12 +12,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 // import purple.mod.CraftQuest;
 import purple.mod.ModItems;
+import purple.mod.items.armor.materials.CraftQuestArmorMaterials;
 
 public class CloudArmor extends ArmorItem {
     float currentFlightTime =0;
     final Type type;
     public CloudArmor(Type type){
-        super(CloudArmorMaterial.INSTANCE, type, new FabricItemSettings());
+        super(CraftQuestArmorMaterials.CLOUD, type, new FabricItemSettings());
         this.type = type;
     }
     public float getMaxFlyTime(PlayerEntity user){

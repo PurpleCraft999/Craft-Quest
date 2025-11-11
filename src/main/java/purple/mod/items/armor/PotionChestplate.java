@@ -22,14 +22,14 @@ import net.minecraft.world.World;
 // import net.minecraft.recipe.Recipe;;
 import purple.mod.CraftQuest;
 import purple.mod.ModItems;
-import purple.mod.items.armor.materials.PotionArmorMaterial;
+import purple.mod.items.armor.materials.CraftQuestArmorMaterials;
 
 
 public class PotionChestplate extends ArmorItem{
     StatusEffectInstance effect = null;
     final String uuidKey = CraftQuest.MOD_ID + "UUID";
     public PotionChestplate(){
-        super(PotionArmorMaterial.INSTANCE, Type.CHESTPLATE, new FabricItemSettings());
+        super(CraftQuestArmorMaterials.POTION, Type.CHESTPLATE, new FabricItemSettings());
         // this.uuid = UUID.randomUUID();
     }
     @Override

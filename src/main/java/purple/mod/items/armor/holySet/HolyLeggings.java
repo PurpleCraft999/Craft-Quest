@@ -3,12 +3,12 @@ package purple.mod.items.armor.holySet;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.ArmorItem;
-import purple.mod.items.armor.materials.HolyArmorMaterial;
+import purple.mod.items.armor.materials.CraftQuestArmorMaterials;
 
 public class HolyLeggings extends ArmorItem {
 
     public HolyLeggings() {
-        super(HolyArmorMaterial.INSTANCE,Type.LEGGINGS,new FabricItemSettings());
+        super(CraftQuestArmorMaterials.HOLY,Type.LEGGINGS,new FabricItemSettings());
     }
 
 

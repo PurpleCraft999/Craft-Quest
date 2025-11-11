@@ -3,7 +3,7 @@
 	"package": "purple.mod.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"CraftingMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
