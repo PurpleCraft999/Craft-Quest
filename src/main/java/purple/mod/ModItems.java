@@ -33,8 +33,9 @@ import purple.mod.items.pickaxes.ObsidianPickaxe;
 import purple.mod.items.swords.BitterBlade;
 import purple.mod.items.swords.IceBlade;
 import purple.mod.items.swords.LifeBlade;
-// import purple.mod.items.swords.LooterSword;
+import purple.mod.items.swords.LooterSword;
 import purple.mod.items.swords.UndeadSword;
+import purple.mod.items.swords.WildCardSword;
 public class ModItems {
 
         public static final float SWORD_SPEED = -2.4f;
@@ -65,7 +66,9 @@ public class ModItems {
         public static final Item ClOUD_LEGGINGS = registerItem(new CloudLeggings(), "cloud_leggings");
         public static final Item ClOUD_BOOTS = registerItem(new CloudBoots(), "cloud_boots");
         public static final Item ClOUD_SWORD = registerItem(new CloudSword(), "cloud_sword");
-        // public static final Item LOOTER_SWORD = registerItem(new LooterSword(), "looter_sword");
+        public static final Item LOOTER_SWORD = registerItem(new LooterSword(), "looter_sword");
+
+        public static final Item WILD_CARD_SWORD = registerItem(new WildCardSword(), "wild_card_sword");
 
 
 
@@ -102,13 +105,13 @@ public class ModItems {
                         .register((itemGroup) -> itemGroup.add(BITTER_BLADE));
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                         .register((itemGroup) -> itemGroup.add(LIFE_BLADE));
-                // CraftQuest.CraftQuestEffectHandler.addEffectUUID(EntityAttributes.GENERIC_MAX_HEALTH, UUID.fromString("7020cf19-b501-4515-a244-42dd1da281e6"));
-
+                
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                         .register((itemGroup) -> itemGroup.add(UNDEAD_SWORD));
-                // ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
-                //         .register((itemGroup) -> itemGroup.add(LOOTER_SWORD));
-
+                ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
+                        .register((itemGroup) -> itemGroup.add(LOOTER_SWORD));
+                ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
+                        .register((itemGroup) -> itemGroup.add(WILD_CARD_SWORD));
                 //adds armor to group
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                                 .register((itemGroup) -> itemGroup.add(POTION_CHESTPLATE));
@@ -134,15 +137,20 @@ public class ModItems {
 
                 // adds cloud stuff to the group
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
-                                .register((itemGroup) -> itemGroup.add(ClOUD_HELMET));
+                        .register((itemGroup) -> itemGroup.add(ClOUD_HELMET));
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
-                                .register((itemGroup) -> itemGroup.add(ClOUD_CHESTPLATE));
+                        .register((itemGroup) -> itemGroup.add(ClOUD_CHESTPLATE));
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
-                                .register((itemGroup) -> itemGroup.add(ClOUD_LEGGINGS));
+                        .register((itemGroup) -> itemGroup.add(ClOUD_LEGGINGS));
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
-                                .register((itemGroup) -> itemGroup.add(ClOUD_BOOTS));
-                                ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
-                                .register((itemGroup) -> itemGroup.add(ClOUD_SWORD));
+                        .register((itemGroup) -> itemGroup.add(ClOUD_BOOTS));
+                ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
+                        .register((itemGroup) -> itemGroup.add(ClOUD_SWORD));
+
+
+
+
+                
 
         }
 }

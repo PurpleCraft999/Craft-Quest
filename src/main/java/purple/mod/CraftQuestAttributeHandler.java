@@ -92,6 +92,8 @@ public class CraftQuestAttributeHandler {
     }
 
 
+
+
     @Nullable
     EntityAttribute getAttributeUuid(UUID uuid){
         EntityAttribute atter = effectuuids.get(uuid);
