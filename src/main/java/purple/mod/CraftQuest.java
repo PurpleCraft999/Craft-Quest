@@ -53,6 +53,8 @@ public class CraftQuest implements ModInitializer {
 		LOGGER.info("Craft-Quest initialized");
 	}
 
+
+
 	private boolean damageListener(LivingEntity target, DamageSource source, float amount) {
 		if (target.getWorld().isClient()) {
 			return false;
