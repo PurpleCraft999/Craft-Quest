@@ -3,7 +3,7 @@
 	"id": "craft-quest",
 	"version": "${version}",
 	"name": "craft-quest",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "CraftQuest",
 	"authors": [
 		"PurpleCraft",
 		"Claydal"
@@ -37,6 +37,18 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+
+			},
+			"badges": [
+
+			],
+
+			"update_checker": true
+		}
 	}
 }

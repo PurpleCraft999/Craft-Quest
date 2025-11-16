@@ -26,6 +26,7 @@ import purple.mod.items.armor.holySet.HolyChestplate;
 import purple.mod.items.armor.holySet.HolyHelmet;
 import purple.mod.items.armor.holySet.HolyLeggings;
 import purple.mod.items.armor.holySet.HolySword;
+import purple.mod.items.other.WeavingBow;
 import purple.mod.items.pickaxes.BoomPickaxe;
 import purple.mod.items.pickaxes.MinerPickaxe;
 import purple.mod.items.pickaxes.NetherStarPickaxe;
@@ -67,6 +68,7 @@ public class ModItems {
         public static final Item ClOUD_BOOTS = registerItem(new CloudBoots(), "cloud_boots");
         public static final Item ClOUD_SWORD = registerItem(new CloudSword(), "cloud_sword");
         public static final Item LOOTER_SWORD = registerItem(new LooterSword(), "looter_sword");
+        public static final Item WEAVING_BOW = registerItem(new WeavingBow(), "weaving_bow");
 
         public static final Item WILD_CARD_SWORD = registerItem(new WildCardSword(), "wild_card_sword");
 
@@ -112,6 +114,8 @@ public class ModItems {
                         .register((itemGroup) -> itemGroup.add(LOOTER_SWORD));
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                         .register((itemGroup) -> itemGroup.add(WILD_CARD_SWORD));
+                ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
+                        .register((itemGroup) -> itemGroup.add(WEAVING_BOW));
                 //adds armor to group
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                                 .register((itemGroup) -> itemGroup.add(POTION_CHESTPLATE));

@@ -82,7 +82,7 @@ public class LooterSword extends SwordItem{
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 
         // stack.addAttributeModifier(EntityAttributes.GENERIC_LUCK, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, getOrCreateTranslationKey(), slot, null)EntityAttributeModifier, null);
-            if (EnchantmentHelper.get(stack).get(Enchantments.LOOTING)==null){
+            if (stack.isOf(ModItems.LOOTER_SWORD)&&EnchantmentHelper.get(stack).get(Enchantments.LOOTING)==null){
             stack.addEnchantment(Enchantments.LOOTING, 3);
             }
 
