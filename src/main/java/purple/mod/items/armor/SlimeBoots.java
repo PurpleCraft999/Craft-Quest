@@ -15,6 +15,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 // import purple.mod.CraftQuest;
 import purple.mod.ModItems;
+import purple.mod.management.CraftQuestArmorMaterials;
 
 
 public class SlimeBoots extends ArmorItem{

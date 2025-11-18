@@ -35,6 +35,7 @@ import purple.mod.items.swords.BitterBlade;
 import purple.mod.items.swords.IceBlade;
 import purple.mod.items.swords.LifeBlade;
 import purple.mod.items.swords.LooterSword;
+import purple.mod.items.swords.SoulSword1000;
 import purple.mod.items.swords.UndeadSword;
 import purple.mod.items.swords.WildCardSword;
 public class ModItems {
@@ -67,10 +68,11 @@ public class ModItems {
         public static final Item ClOUD_LEGGINGS = registerItem(new CloudLeggings(), "cloud_leggings");
         public static final Item ClOUD_BOOTS = registerItem(new CloudBoots(), "cloud_boots");
         public static final Item ClOUD_SWORD = registerItem(new CloudSword(), "cloud_sword");
-        public static final Item LOOTER_SWORD = registerItem(new LooterSword(), "looter_sword");
-        public static final Item WEAVING_BOW = registerItem(new WeavingBow(), "weaving_bow");
-
+        public static final Item LOOTER_SWORD = registerItem(new LooterSword(), "looter_sword");        
         public static final Item WILD_CARD_SWORD = registerItem(new WildCardSword(), "wild_card_sword");
+        public static final Item WEAVING_BOW = registerItem(new WeavingBow(), "weaving_bow");
+        public static final Item SWORD_OF_SOULS = registerItem(new SoulSword1000(), "sword_of_1000_souls");
+
 
 
 
@@ -116,6 +118,8 @@ public class ModItems {
                         .register((itemGroup) -> itemGroup.add(WILD_CARD_SWORD));
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                         .register((itemGroup) -> itemGroup.add(WEAVING_BOW));
+                   ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
+                                .register((itemGroup) -> itemGroup.add(SWORD_OF_SOULS));     
                 //adds armor to group
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                                 .register((itemGroup) -> itemGroup.add(POTION_CHESTPLATE));

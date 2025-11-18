@@ -42,7 +42,7 @@ public abstract class ArrowMixin {
                     spider.setPos(blockPos.getX(),blockPos.getY()+1,blockPos.getZ());
                     spider.setAttacking(false);
                     spider.setTarget(target);
-                    weavingBow.WEAVERTEAM.addMember(spider);
+                    weavingBow.WeaverTeam.addMember(spider);
                     serverWorld.spawnEntity(spider);
                 }
 

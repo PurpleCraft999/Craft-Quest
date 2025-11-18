@@ -25,9 +25,9 @@ public class LooterSword extends SwordItem{
     static final UUID effectUUID = UUID.fromString("bb5fe1c9-a10c-445c-8709-9897bb129028");
 
     static{
-        CraftQuest.CraftQuestEffectHandler.addEffect(baseUUID, EntityAttributes.GENERIC_LUCK);
+        CraftQuest.CraftQuestEffectHandler.addAttribute(baseUUID, EntityAttributes.GENERIC_LUCK);
 
-        CraftQuest.CraftQuestEffectHandler.addEffect(effectUUID, EntityAttributes.GENERIC_LUCK);
+        CraftQuest.CraftQuestEffectHandler.addAttribute(effectUUID, EntityAttributes.GENERIC_LUCK);
     }
     public LooterSword(){
         super(ToolMaterials.DIAMOND, 3, ModItems.SWORD_SPEED, new FabricItemSettings());

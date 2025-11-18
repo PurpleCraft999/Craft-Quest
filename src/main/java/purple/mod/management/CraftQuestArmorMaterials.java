@@ -1,4 +1,4 @@
-package purple.mod.items.armor;
+package purple.mod.management;
 
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorItem.Type;

@@ -10,7 +10,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import purple.mod.ModItems;
-import purple.mod.items.armor.CraftQuestToolMaterials;
+import purple.mod.management.CraftQuestToolMaterials;
 
 public class CloudSword extends SwordItem {
     public CloudSword(){

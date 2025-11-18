@@ -20,7 +20,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import purple.mod.CraftQuest;
 import purple.mod.ModItems;
-import purple.mod.items.armor.CraftQuestToolMaterials;
+import purple.mod.management.CraftQuestToolMaterials;
 
 import java.util.ArrayList;
 import java.util.HashSet;

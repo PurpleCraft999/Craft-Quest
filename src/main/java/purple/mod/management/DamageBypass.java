@@ -1,4 +1,4 @@
-package purple.mod;
+package purple.mod.management;
 
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;

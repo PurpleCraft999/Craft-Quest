@@ -28,7 +28,7 @@ import purple.mod.ModItems;
 public class LifeBlade extends SwordItem {
     final static UUID healthUUID = UUID.fromString("7020cf19-b501-4515-a244-42dd1da281e6");
     static {
-        CraftQuest.CraftQuestEffectHandler.addEffect(UUID.fromString("7020cf19-b501-4515-a244-42dd1da281e6"),
+        CraftQuest.CraftQuestEffectHandler.addAttribute(UUID.fromString("7020cf19-b501-4515-a244-42dd1da281e6"),
                 EntityAttributes.GENERIC_MAX_HEALTH);
     }
 
@@ -53,7 +53,7 @@ public class LifeBlade extends SwordItem {
 
             // }
             Predicate<Entity> keep2 = e->keepEffect(living);
-            CraftQuest.CraftQuestEffectHandler.logic(entity, slot < 8, keep2, healthUUID,1,Operation.MULTIPLY_TOTAL);
+            CraftQuest.CraftQuestEffectHandler.logic(living, slot < 8, keep2, healthUUID,1,Operation.MULTIPLY_TOTAL);
         }
         // else{
         // if (entity instanceof PlayerEntity user){

@@ -15,7 +15,7 @@ import net.minecraft.item.ToolMaterials;
 import net.minecraft.nbt.NbtCompound;
 // import net.minecraft.scoreboard.ScoreboardCriterion;
 // import net.minecraft.scoreboard.ScoreboardObjective;
-import net.minecraft.scoreboard.Team;
+// import net.minecraft.scoreboard.Team;
 // import net.minecraft.scoreboard.ScoreboardCriterion.RenderType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
@@ -23,15 +23,16 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import purple.mod.ModItems;
-import purple.mod.items.other.TeamManager;
+import purple.mod.management.TeamManager;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 // import net.minecraft.entity.EntityType;
 public class UndeadSword extends SwordItem {
     final int MAX_SUMMONS = 25;
-    final TeamManager teamManager = new TeamManager();
+    TeamManager teamManager;
     final String summonCountKey = "summon count";
-    Team summonedTeam;
+    final String TeamName= "summonedMobTeam";
+    // Team summonedTeam;
     //TODO make summons damage other things
     public UndeadSword(){
         super(ToolMaterials.IRON, 3, ModItems.SWORD_SPEED, new FabricItemSettings());
@@ -75,8 +76,8 @@ public class UndeadSword extends SwordItem {
     }
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (this.summonedTeam ==null && entity instanceof LivingEntity livingEntity && entity.getWorld() instanceof ServerWorld serverWorld){
-            this.summonedTeam = teamManager.makeFriendlyTeam(livingEntity, serverWorld, "summonedMobTeam");
+        if (this.teamManager ==null && entity instanceof PlayerEntity livingEntity && entity.getWorld() instanceof ServerWorld serverWorld){
+            this.teamManager = TeamManager.makeFriendlyTeam(livingEntity, serverWorld, TeamName);
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
@@ -85,9 +86,11 @@ public class UndeadSword extends SwordItem {
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if(target.isDead()){
             if (getNbtSummonCount(stack)<this.MAX_SUMMONS){
-            setNbtSummonCount(stack, getNbtSummonCount(stack)+1);
+                setNbtSummonCount(stack, getNbtSummonCount(stack)+1);
             }
-            // setNbtSummonCount(stack);
+            
+        } else{
+            
         }
         return super.postHit(stack, target, attacker);
     }

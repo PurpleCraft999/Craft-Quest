@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 // import purple.mod.CraftQuest;
 import purple.mod.ModItems;
-import purple.mod.items.armor.CraftQuestArmorMaterials;
+import purple.mod.management.CraftQuestArmorMaterials;
 
 public class CloudArmor extends ArmorItem {
     float currentFlightTime =0;

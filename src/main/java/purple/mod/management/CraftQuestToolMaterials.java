@@ -1,4 +1,4 @@
-package purple.mod.items.armor;
+package purple.mod.management;
 
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
@@ -6,6 +6,7 @@ import net.minecraft.recipe.Ingredient;
 
 public enum CraftQuestToolMaterials implements ToolMaterial{
 
+    SOUL(ToolMaterials.NETHERITE,Ingredient.EMPTY),
     CLOUD(ToolMaterials.DIAMOND,Ingredient.EMPTY),
     HOLY(ToolMaterials.DIAMOND,Ingredient.EMPTY);
     

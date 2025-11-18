@@ -1,4 +1,4 @@
-package purple.mod;
+package purple.mod.management;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -18,6 +18,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier.Operation;
 // import net.minecraft.entity.attribute.EntityAttributes;
 // import net.minecraft.entity.player.PlayerEntity;
 // import net.minecraft.entity.player.PlayerInventory;
+import purple.mod.CraftQuest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class CraftQuestAttributeHandler {
 
 
     }
-    public void addAtribute(LivingEntity entity,double effectStrength,Operation operation,UUID effectUuid){
+    public void createAttribute(LivingEntity entity,double effectStrength,Operation operation,UUID effectUuid){
         
         EntityAttribute atribute = getAttributeUuid(effectUuid);
         if (atribute ==null){
@@ -44,51 +45,65 @@ public class CraftQuestAttributeHandler {
             
         EntityAttributeModifier mod =   new EntityAttributeModifier(
                 effectUuid, CraftQuest.MOD_ID+atribute.toString()+entity.toString(), effectStrength, operation);
+        CraftQuest.LOGGER.info("added effect "+effectUuid+" to "+getName(entity));
 
-
-        atter.addPersistentModifier(mod);
+        // atter.addPersistentModifier(mod);
+        atter.addTemporaryModifier(mod);
         }
     }
 
-    public void removeAtribute( LivingEntity entity,UUID effectUuid){
+
+    public void removeAttribute( LivingEntity entity,UUID effectUuid){
+
         EntityAttribute atribute = getAttributeUuid(effectUuid);
-        if (atribute==null){
+
+        if (atribute==null || !entity.getAttributes().hasModifierForAttribute(atribute, effectUuid)){
             return;
         }
-        EntityAttributeInstance health = entity.getAttributeInstance(atribute);
+        EntityAttributeInstance instance = entity.getAttributeInstance(atribute);
        
-
-        health.tryRemoveModifier(effectUuid);
-        entity.heal(0.0f);
+        instance.clearModifiers();
+        if (instance.tryRemoveModifier(effectUuid)){
+            CraftQuest.LOGGER.info("Effect "+effectUuid+" cleared from "+getName(entity));
+        } 
+        // else{
+        //     CraftQuest.LOGGER.info("Effect "+effectUuid+" failed to clear from "+getName(entity));
+        // }
+        
+        // entity.heal(0.0f);
+        
     
     }
 
-     public void addEffect(UUID u,EntityAttribute e){
+     public void addAttribute(UUID u,EntityAttribute e){
         effectuuids.put(u, e);
     }
-    public void logic(Entity entity,boolean keepCon,@Nullable Predicate<Entity> dontRemove,UUID uuid, double effectStrength,Operation operation){
-        // EntityAttribute atter = getAttributeUuid(uuid);
+    public void logic(LivingEntity entity,boolean keepCon,@Nullable Predicate<Entity> dontRemove,UUID uuid, double effectStrength,Operation operation){
+        if (entity.getWorld().isClient()){
+            return;
+        }
 
 
+        // CraftQuest.LOGGER.info("running");
 
-        if (entity instanceof LivingEntity living) {
             //slot<=8
             if (keepCon){
 
                 
-                CraftQuest.CraftQuestEffectHandler.addAtribute(living, effectStrength, operation, uuid);
+                CraftQuest.CraftQuestEffectHandler.createAttribute(entity, effectStrength, operation, uuid);
                 
             }  else{
-                if (dontRemove !=null){
-                if (dontRemove.test(living)){
+                if (dontRemove !=null && dontRemove.test(entity)){
                     return;
                 }
-                }
-            CraftQuest.CraftQuestEffectHandler.removeAtribute(living,
-                    uuid);
+                // CraftQuest.LOGGER.info("remove effect");
+            CraftQuest.CraftQuestEffectHandler.removeAttribute(entity,uuid);
             
             }
-        }
+        
+    }
+    private String getName(LivingEntity entity){
+        return TeamManager.getName(entity);
     }
 
 

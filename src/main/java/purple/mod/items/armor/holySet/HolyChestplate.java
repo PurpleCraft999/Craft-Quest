@@ -18,13 +18,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import purple.mod.CraftQuest;
 import purple.mod.ModItems;
-import purple.mod.items.armor.CraftQuestArmorMaterials;
+import purple.mod.management.CraftQuestArmorMaterials;
 
 
 public class HolyChestplate extends ArmorItem{
     public static final UUID HEALTH_UUID = UUID.fromString("4d064eb1-3f55-43b6-9a97-f32023b461e8");
     static{
-        CraftQuest.CraftQuestEffectHandler.addEffect(HEALTH_UUID, EntityAttributes.GENERIC_MAX_HEALTH);
+        CraftQuest.CraftQuestEffectHandler.addAttribute(HEALTH_UUID, EntityAttributes.GENERIC_MAX_HEALTH);
     }
     public HolyChestplate(){
         super(CraftQuestArmorMaterials.HOLY,Type.CHESTPLATE,new FabricItemSettings());
@@ -55,7 +55,9 @@ public class HolyChestplate extends ArmorItem{
             } else {
                 // removeHealth(user, getHealthUUID());
             }
-            CraftQuest.CraftQuestEffectHandler.logic(entity, wearingFullSet(user), null, HEALTH_UUID,80,Operation.ADDITION);
+            if (entity instanceof LivingEntity livingEntity){
+            CraftQuest.CraftQuestEffectHandler.logic(livingEntity, wearingFullSet(user), null, HEALTH_UUID,80,Operation.ADDITION);
+            }
 
         }
 

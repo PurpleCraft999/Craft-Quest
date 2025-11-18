@@ -17,6 +17,8 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import purple.mod.items.armor.holySet.HolyChestplate;
 import purple.mod.items.armor.holySet.HolySword;
+import purple.mod.management.CraftQuestAttributeHandler;
+import purple.mod.management.DamageBypass;
 
 // import java.rmi.registry.Registry;
 

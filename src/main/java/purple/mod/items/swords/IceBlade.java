@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 // import net.minecraft.util.Hand;
@@ -36,7 +37,7 @@ give speed 1 when holding in main hand,
  */
 
 public class IceBlade extends SwordItem {
-    boolean melted = false;
+    // boolean melted = false;
     final int maxMeltTime = 120;
     // static{
         // CraftQuest.CraftQuestEffectHandler.addEffect(UUID.fromString("8b34055f-3574-49fe-aa5e-463b7d1141cc"), EntityAttributes.GENERIC_MOVEMENT_SPEED);
@@ -52,17 +53,18 @@ public class IceBlade extends SwordItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (getMelted(stack)) {
+            return false;
+        } 
         
-        
-        if (!this.melted){
+        else{
         target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 2*20,1),attacker);
 
 
         return super.postHit(stack, target, attacker);
         }
-        else {
-            return false;
-        }
+        
+        
     }
     
 
@@ -71,21 +73,21 @@ public class IceBlade extends SwordItem {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 
-        if (selected && entity instanceof LivingEntity livingEntity && !this.melted){
+        if (selected && entity instanceof LivingEntity livingEntity && !getMelted(stack)){
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED,1,0,false,false));
 
         }
         if (entity.isOnFire()){
-            this.melted = true;
+            setMelted(stack, true);
             if (entity instanceof PlayerEntity player) {
                 player.getItemCooldownManager().set(this, maxMeltTime);
             }
             
             // MattMod.LOGGER.info("ice blade melted");
         } 
-        if (this.melted && !entity.isOnFire() && entity instanceof PlayerEntity user){
+        if (getMelted(stack) && !entity.isOnFire() && entity instanceof PlayerEntity user){
             if (!user.getItemCooldownManager().isCoolingDown(this)){
-                this.melted = false;
+                setMelted(stack, false);
             }
             
             }
@@ -100,7 +102,7 @@ public class IceBlade extends SwordItem {
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
         String text;
         Formatting color;
-        if (!this.melted){ 
+        if (!getMelted(stack)){ 
             text = "Frozen";
             color = Formatting.AQUA;
             } else{
@@ -110,13 +112,14 @@ public class IceBlade extends SwordItem {
         tooltip.add(Text.translatable(text).formatted(color));
     }
 
-    @Override
-    public float getAttackDamage() {
-        if (this.melted){
-            return 0;
-        } else{
-            return super.getAttackDamage();
-        }
+
+    boolean getMelted(ItemStack stack){
+        NbtCompound nbt =stack.getOrCreateNbt();
+        return nbt.getBoolean("melted");
+    }
+    void setMelted(ItemStack stack,boolean state){
+        NbtCompound nbt = stack.getOrCreateNbt();
+        nbt.putBoolean("melted", state);
     }
     
     
