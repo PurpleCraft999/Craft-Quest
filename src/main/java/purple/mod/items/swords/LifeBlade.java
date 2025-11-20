@@ -1,7 +1,6 @@
 package purple.mod.items.swords;
 
 import java.util.UUID;
-import java.util.function.Predicate;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.Entity;
@@ -52,9 +51,9 @@ public class LifeBlade extends SwordItem {
             // living, 1, Operation.MULTIPLY_TOTAL,healthUUID);
 
             // }
-            Predicate<Entity> keep2 = e->keepEffect(living);
-            CraftQuest.CraftQuestEffectHandler.logic(living, slot < 8, keep2, healthUUID,1,Operation.MULTIPLY_TOTAL);
+            CraftQuest.CraftQuestEffectHandler.logic(living, keepEffect(entity, slot), healthUUID,1,Operation.MULTIPLY_TOTAL);
         }
+    
         // else{
         // if (entity instanceof PlayerEntity user){
         // PlayerInventory inventory =user.getInventory();
@@ -73,7 +72,8 @@ public class LifeBlade extends SwordItem {
         // }
     }
 
-    boolean keepEffect(Entity entity) {
+    boolean keepEffect(Entity entity,int slot) {
+        boolean inInvintory = false;
         if (entity instanceof PlayerEntity user) {
             PlayerInventory inventory = user.getInventory();
             for (int i = 0; i < PlayerInventory.getHotbarSize(); i++) {
@@ -83,7 +83,7 @@ public class LifeBlade extends SwordItem {
             }
 
         }
-        return false;
+        return inInvintory || slot<8;
     }
 
 }

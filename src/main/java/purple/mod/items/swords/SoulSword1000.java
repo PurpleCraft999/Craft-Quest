@@ -85,7 +85,7 @@ public class SoulSword1000 extends SwordItem{
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (entity instanceof LivingEntity livingEntity){
         CraftQuest.CraftQuestEffectHandler.logic(livingEntity, livingEntity.getMainHandStack().isOf(ModItems.SWORD_OF_SOULS),
-                null, uuid, getLifeForce(stack), Operation.MULTIPLY_TOTAL);
+                 uuid, getLifeForce(stack), Operation.MULTIPLY_TOTAL);
                 }
 
         super.inventoryTick(stack, world, entity, slot, selected);

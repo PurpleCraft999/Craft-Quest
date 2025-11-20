@@ -1,10 +1,8 @@
 package purple.mod.management;
 import java.util.UUID;
-import java.util.function.Predicate;
 
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
@@ -69,16 +67,14 @@ public class CraftQuestAttributeHandler {
         // else{
         //     CraftQuest.LOGGER.info("Effect "+effectUuid+" failed to clear from "+getName(entity));
         // }
-        
-        // entity.heal(0.0f);
-        
+                
     
     }
 
      public void addAttribute(UUID u,EntityAttribute e){
         effectuuids.put(u, e);
     }
-    public void logic(LivingEntity entity,boolean keepCon,@Nullable Predicate<Entity> dontRemove,UUID uuid, double effectStrength,Operation operation){
+    public void logic(LivingEntity entity,boolean keepCon,UUID uuid, double effectStrength,Operation operation){
         if (entity.getWorld().isClient()){
             return;
         }
@@ -88,17 +84,10 @@ public class CraftQuestAttributeHandler {
 
             //slot<=8
             if (keepCon){
-
-                
-                CraftQuest.CraftQuestEffectHandler.createAttribute(entity, effectStrength, operation, uuid);
-                
+                CraftQuest.CraftQuestEffectHandler.createAttribute(entity, effectStrength, operation, uuid);  
             }  else{
-                if (dontRemove !=null && dontRemove.test(entity)){
-                    return;
-                }
                 // CraftQuest.LOGGER.info("remove effect");
             CraftQuest.CraftQuestEffectHandler.removeAttribute(entity,uuid);
-            
             }
         
     }
@@ -124,7 +113,7 @@ public class CraftQuestAttributeHandler {
 
     
 
-public static byte[] ToBytes(UUID obj) {
+public static byte[] UUIDToBytes(UUID obj) {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream oos = new ObjectOutputStream(bos)) {
 

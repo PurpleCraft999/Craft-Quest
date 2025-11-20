@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.nbt.NbtCompound;
+
 // import net.minecraft.scoreboard.ScoreboardCriterion;
 // import net.minecraft.scoreboard.ScoreboardObjective;
 // import net.minecraft.scoreboard.Team;
@@ -22,21 +23,28 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import purple.mod.CraftQuest;
 import purple.mod.ModItems;
+// import purple.mod.management.CraftQuestAttributeHandler;
 import purple.mod.management.TeamManager;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 // import net.minecraft.entity.EntityType;
 public class UndeadSword extends SwordItem {
     final int MAX_SUMMONS = 25;
-    TeamManager teamManager;
+    // public TeamManager teamManager;
+    public static final String TeamName = "summonedMobTeam";
+
+    static{
+        CraftQuest.TEAMS.put(TeamName, null);
+    }
     final String summonCountKey = "summon count";
-    final String TeamName= "summonedMobTeam";
+    TeamManager teamManager;
     // Team summonedTeam;
     //TODO make summons damage other things
     public UndeadSword(){
         super(ToolMaterials.IRON, 3, ModItems.SWORD_SPEED, new FabricItemSettings());
-        
+        // this.teamManager = CraftQuest.TEAMS.get(TeamName);
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
@@ -53,7 +61,7 @@ public class UndeadSword extends SwordItem {
                     MobEntity summonedMob = getSummon(world);
                     summonedMob.initialize(server, world.getLocalDifficulty(user.getBlockPos()), SpawnReason.MOB_SUMMONED, null, null);
                     summonedMob.setPos(user.getPos().x, user.getPos().y, user.getPos().z);
-                    summonedMob.setCustomName(Text.literal(user.getEntityName()+"_summoned_minion"));
+                    // summonedMob.setCustomName(Text.literal(user.getEntityName()+"_summoned_minion"));
                     teamManager.addMember(summonedMob);
                 
                     summonedMob.setTarget(null);
@@ -61,6 +69,7 @@ public class UndeadSword extends SwordItem {
                     
                     
                     server.spawnEntity(summonedMob);
+                    // addMobToSummons(stack, summonedMob);
                 }
 
 
@@ -76,8 +85,12 @@ public class UndeadSword extends SwordItem {
     }
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (this.teamManager ==null && entity instanceof PlayerEntity livingEntity && entity.getWorld() instanceof ServerWorld serverWorld){
-            this.teamManager = TeamManager.makeFriendlyTeam(livingEntity, serverWorld, TeamName);
+        //         if (this.teamManager ==null && entity instanceof PlayerEntity livingEntity && entity.getWorld() instanceof ServerWorld serverWorld){
+        //     teamManager = TeamManager.makeFriendlyTeam(livingEntity, serverWorld, TeamName);
+        //     CraftQuest.LOGGER.info("added to team");
+        // }
+        if (teamManager ==null){
+        teamManager = CraftQuest.TEAMS.get(TeamName);
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
@@ -90,7 +103,8 @@ public class UndeadSword extends SwordItem {
             }
             
         } else{
-            
+            teamManager.setTeamTarget(target);
+
         }
         return super.postHit(stack, target, attacker);
     }
@@ -111,10 +125,36 @@ public class UndeadSword extends SwordItem {
         }
         return -1;
     }
+    // void addMobToSummons(ItemStack stack,MobEntity mob){
+    //     NbtCompound nbt = stack.getOrCreateNbt();
+    //     NbtList list = nbt.getList("saved summons", NbtElement.INT_ARRAY_TYPE);
+
+    //     list.add(NbtHelper.fromUuid(mob.getUuid()));
+    //     nbt.put("saved summons", list);
+        
+
+    // }
+    
+    // ArrayList<UUID> getSummonsList(ItemStack stack){
+    //     NbtList list = stack.getOrCreateNbt().getList("saved summons", NbtElement.INT_ARRAY_TYPE);
+    //     ArrayList<UUID> summonList = new ArrayList<>();
+    //     for (int i =0;i<list.size();i++){
+            
+    //     summonList.add(  NbtHelper.toUuid(list.get(0)));
+    //     list.remove(0);
+    //     }
+    //     return summonList;
+    // }
+
+
+
   @Override
   public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
       
     tooltip.add(Text.translatable(("count: "+(Integer)getNbtSummonCount(stack)).toString()));
+    // tooltip.add(Text.translatable(getSummonsList(stack).toString()));
+    // if (teamManager !=null){
+    // tooltip.add(Text.translatable(teamManager.toString()));}
 
       super.appendTooltip(stack, world, tooltip, context);
   }

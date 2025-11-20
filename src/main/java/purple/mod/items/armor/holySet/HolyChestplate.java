@@ -56,7 +56,7 @@ public class HolyChestplate extends ArmorItem{
                 // removeHealth(user, getHealthUUID());
             }
             if (entity instanceof LivingEntity livingEntity){
-            CraftQuest.CraftQuestEffectHandler.logic(livingEntity, wearingFullSet(user), null, HEALTH_UUID,80,Operation.ADDITION);
+            CraftQuest.CraftQuestEffectHandler.logic(livingEntity, wearingFullSet(user), HEALTH_UUID,80,Operation.ADDITION);
             }
 
         }

@@ -1,14 +1,20 @@
 package purple.mod.management;
 
+import java.util.Collection;
+import java.util.UUID;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.Team;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import purple.mod.CraftQuest;
 
 public class TeamManager {
-     Team team;
+    public Team team;
     private TeamManager(Team team){
         this.team = team;
     }
@@ -33,8 +39,11 @@ public class TeamManager {
        }
        Team summonedMobTeam = scoreboard.getTeam(teamName);
        summonedMobTeam.setFriendlyFireAllowed(false);
-        
-        summonedMobTeam.getScoreboard().addPlayerToTeam(userName, summonedMobTeam);
+       
+            if (user.addCommandTag(teamName)){
+                CraftQuest.LOGGER.info("Succesfully added "+userName+"to team"+teamName);
+            }
+        // summonedMobTeam.getScoreboard().addPlayerToTeam(userName, summonedMobTeam);
         CraftQuest.LOGGER.debug("added "+userName);
        return new TeamManager(summonedMobTeam);
    }
@@ -52,11 +61,38 @@ public class TeamManager {
         if (livingEntity instanceof PlayerEntity playerEntity) {
             userName = playerEntity.getEntityName();
            
-        } else {
+        } else if (livingEntity instanceof ServerPlayerEntity serverPlayerEntity){
+
+            userName = serverPlayerEntity.getEntityName();
+        }
+        
+        
+        else {
             userName = livingEntity.getUuidAsString();
 
         }
         return userName;
+    }
+    @Override
+    public String toString() {
+        
+        return this.team.getName();
+    }
+
+    public Collection<String> getTeamMembers(){
+        return this.team.getPlayerList();
+    }
+
+    public void setTeamTarget(LivingEntity target){
+        if (target.getWorld() instanceof ServerWorld serverWorld){
+
+        for (String teamMateUUID :getTeamMembers()) {
+            UUID uuid = UUID.fromString(teamMateUUID);
+           if  (serverWorld.getEntity(uuid) instanceof MobEntity mobEntity){
+            mobEntity.setTarget(target);
+           }
+        }   
+        }
     }
    
 }
