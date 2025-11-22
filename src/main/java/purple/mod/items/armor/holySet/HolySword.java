@@ -82,6 +82,7 @@ public class HolySword extends SwordItem{
                 bolt.setPosition(enemy.getPos());
                 world.spawnEntity(bolt);
             }
+            
             }
         }
         return TypedActionResult.success(stack);

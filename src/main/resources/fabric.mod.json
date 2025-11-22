@@ -3,14 +3,14 @@
 	"id": "craft-quest",
 	"version": "${version}",
 	"name": "craft-quest",
-	"description": "CraftQuest",
+	"description": "adds a few weapons",
 	"authors": [
 		"PurpleCraft",
 		"Claydal"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/project/craft-quest/",
+		"sources": "https://github.com/PurpleCraft999/Craft-Quest"
 	},
 	"license": "MIT",
 	"icon": "assets/craft-quest/icon.png",

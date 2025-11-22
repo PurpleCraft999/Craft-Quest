@@ -32,6 +32,7 @@ import purple.mod.items.pickaxes.MinerPickaxe;
 import purple.mod.items.pickaxes.NetherStarPickaxe;
 import purple.mod.items.pickaxes.ObsidianPickaxe;
 import purple.mod.items.swords.BitterBlade;
+import purple.mod.items.swords.EnderSword;
 import purple.mod.items.swords.IceBlade;
 import purple.mod.items.swords.LifeBlade;
 import purple.mod.items.swords.LooterSword;
@@ -72,6 +73,7 @@ public class ModItems {
         public static final Item WILD_CARD_SWORD = registerItem(new WildCardSword(), "wild_card_sword");
         public static final Item WEAVING_BOW = registerItem(new WeavingBow(), "weaving_bow");
         public static final Item SWORD_OF_SOULS = registerItem(new SoulSword1000(), "sword_of_1000_souls");
+        public static final Item ENDER_SWORD = registerItem(new EnderSword(), "ender_sword");
 
 
 
@@ -120,6 +122,8 @@ public class ModItems {
                         .register((itemGroup) -> itemGroup.add(WEAVING_BOW));
                    ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                                 .register((itemGroup) -> itemGroup.add(SWORD_OF_SOULS));     
+                                ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
+                                   .register((itemGroup) -> itemGroup.add(ENDER_SWORD));
                 //adds armor to group
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                                 .register((itemGroup) -> itemGroup.add(POTION_CHESTPLATE));
