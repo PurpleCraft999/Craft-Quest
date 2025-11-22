@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    " B ",
+    " I ",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    "W": {
+      "item": "minecraft:diamond_sword"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "craft-quest:bitter_blade"
+  }
+}

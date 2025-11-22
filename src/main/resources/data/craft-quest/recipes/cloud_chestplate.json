@@ -1,0 +1,26 @@
+{
+  "pattern": [
+    "# #",
+    "!I!",
+    "PPP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "P": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "minecraft:nether_star"
+    },
+    "!": {
+      "item": "minecraft:ghast_tear"
+    },
+    "#": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "craft-quest:cloud_chestplate",
+    "count": 1
+  }
+}

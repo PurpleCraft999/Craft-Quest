@@ -41,7 +41,6 @@ public class UndeadSword extends SwordItem {
     final String summonCountKey = "summon count";
     TeamManager teamManager;
     // Team summonedTeam;
-    //TODO make summons damage other things
     public UndeadSword(){
         super(ToolMaterials.IRON, 3, ModItems.SWORD_SPEED, new FabricItemSettings());
         // this.teamManager = CraftQuest.TEAMS.get(TeamName);
@@ -50,14 +49,12 @@ public class UndeadSword extends SwordItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
         if (world instanceof ServerWorld server) {
-            // MattMod.LOGGER.info("server");
             int summon_count = getNbtSummonCount(stack);
             if (user.getAbilities().creativeMode){
                 summon_count = MAX_SUMMONS;
             }
             if (summon_count >0){
                 for (int i = 0;i<summon_count;i++){
-                    // MattMod.LOGGER.info("Spawn");
                     MobEntity summonedMob = getSummon(world);
                     summonedMob.initialize(server, world.getLocalDifficulty(user.getBlockPos()), SpawnReason.MOB_SUMMONED, null, null);
                     summonedMob.setPos(user.getPos().x, user.getPos().y, user.getPos().z);

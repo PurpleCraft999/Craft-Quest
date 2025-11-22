@@ -37,9 +37,6 @@ import org.slf4j.LoggerFactory;
 public class CraftQuest implements ModInitializer {
 	public static final String MOD_ID = "craft-quest";
 	public static CraftQuestAttributeHandler CraftQuestEffectHandler = new CraftQuestAttributeHandler();
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public static final RegistryKey<DamageType> HOLY_DAMAGE = RegistryKey.of(RegistryKeys.DAMAGE_TYPE,
@@ -59,11 +56,12 @@ public class CraftQuest implements ModInitializer {
 
 		// this is done so multiple weapons can use their passive effects
 		ServerLivingEntityEvents.ALLOW_DAMAGE.register(this::damageListener);
+		//done for the team tagging
 		ServerPlayConnectionEvents.JOIN.register(this::AutoTeamJoin);
 		
 		ModItems.initialize();
 
-		LOGGER.info("Craft-Quest initialized");
+		LOGGER.info("Craft-Quest load finished");
 	}
 
 

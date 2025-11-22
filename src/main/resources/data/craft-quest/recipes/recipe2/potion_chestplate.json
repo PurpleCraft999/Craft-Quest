@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    " ! ",
+    "!I!",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_chestplate"
+    },
+    "!": {
+      "item": "minecraft:glass_bottle"
+    },
+    "W": {
+      "item": "minecraft:brewing_stand"
+    }
+  },
+  "result": {
+    "item": "craft-quest:potion_chestplate",
+    "count": 1
+  }
+}

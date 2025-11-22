@@ -32,6 +32,8 @@ public abstract class ArrowMixin {
             if (world.isClient()){
                 return;
                 }
+
+
             BlockPos blockPos = target.getBlockPos();
             placeWebs(blockPos, world);
             
@@ -41,14 +43,14 @@ public abstract class ArrowMixin {
                     spider.initialize(serverWorld, world.getLocalDifficulty(blockPos), SpawnReason.MOB_SUMMONED, null, null);
                     spider.setPos(blockPos.getX(),blockPos.getY()+1,blockPos.getZ());
                     spider.setAttacking(false);
-                    spider.setTarget(target);
+                    // spider.setTarget(target);
                     weavingBow.WeaverTeam.addMember(spider);
                     serverWorld.spawnEntity(spider);
                 }
 
             }
         
-        
+            weavingBow.WeaverTeam.setTeamTarget(target);
         
         }
     }

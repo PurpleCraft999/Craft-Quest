@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    "#B#",
+    " W ",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:quartz"
+    },
+    "W": {
+      "item": "minecraft:stick"
+    },
+    "B": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "craft-quest:nether_star_pickaxe",
+    "count": 1
+  }
+}

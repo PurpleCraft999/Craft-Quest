@@ -34,11 +34,9 @@ public class MinerPickaxe extends PickaxeItem {
             queue.add(pos);
             Block mainBlock = state.getBlock();
             HashSet<BlockPos> broken = new HashSet<>();
-            // MattMod.LOGGER.info(queue.toString());
             while(!queue.isEmpty()){
                 if (world.isClient) return false;
                 
-                // MattMod.LOGGER.info(queue.toString());
                 BlockPos blockPos = queue.poll();
                 if (!broken.contains(blockPos)){
                 
@@ -51,10 +49,8 @@ public class MinerPickaxe extends PickaxeItem {
                     BlockState neighborState = world.getBlockState(neighborPos);
                     
                     Block block = neighborState.getBlock();
-                    // MattMod.LOGGER.info("other block pos: "+neighborPos);
                     if (block == mainBlock && !queue.contains(neighborPos)) {
                         queue.add(neighborPos);
-                        // MattMod.LOGGER.info("found block");
                         
                     }
                 }

@@ -1,0 +1,29 @@
+{
+  "pattern": [
+    " B ",
+    "CI!",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "!": {
+      "item": "minecraft:gold_ore"
+    },
+    "I": {
+      "item": "minecraft:iron_pickaxe"
+    },
+    "W": {
+      "item": "minecraft:coal_ore"
+    },
+    "C": {
+      "item": "minecraft:diamond_ore"
+    },
+    "B": {
+      "item": "minecraft:iron_ore"
+    }
+  },
+  "result": {
+    "item": "craft-quest:miner_pickaxe",
+    "count": 1
+  }
+}

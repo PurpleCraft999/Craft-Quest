@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    "A #",
+    "! !",
+    "   "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "!": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "result": {
+    "item": "craft-quest:cloud_boots",
+    "count": 1
+  }
+}

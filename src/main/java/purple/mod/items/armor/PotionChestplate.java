@@ -78,7 +78,6 @@ public class PotionChestplate extends ArmorItem{
     StatusEffectInstance getEffectNbt(ItemStack stack){
         NbtCompound effectNbt = stack.getOrCreateNbt().getCompound("effect");
         StatusEffectInstance effect =   StatusEffectInstance.fromNbt(effectNbt);
-        // MattMod.LOGGER.info("effect is "+effect);
         return effect;
        
 

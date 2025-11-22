@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    "P P",
+    " I ",
+    "L P"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:netherite_sword"
+    },
+    "L": {
+      "item": "minecraft:soul_lantern"
+    },
+    "P": {
+      "item": "minecraft:soul_sand"
+    }
+  },
+  "result": {
+    "item": "craft-quest:sword_of_1000_souls",
+    "count": 1
+  }
+}

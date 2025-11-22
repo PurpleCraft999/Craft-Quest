@@ -1,0 +1,17 @@
+{
+  "pattern": [
+    "! !",
+    "! !",
+    "   "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "!": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "result": {
+    "item": "craft-quest:slime_boots",
+    "count": 1
+  }
+}

@@ -3,7 +3,7 @@ package purple.mod.management;
 import java.util.Collection;
 import java.util.UUID;
 
-import net.minecraft.entity.Entity;
+// import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;

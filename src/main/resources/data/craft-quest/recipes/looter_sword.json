@@ -1,0 +1,38 @@
+{
+  "pattern": [
+    "AB ",
+    "CI!",
+    "LWP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "L": {
+      "item": "minecraft:bone"
+    },
+    "P": {
+      "item": "minecraft:gunpowder"
+    },
+    "I": {
+      "item": "minecraft:diamond_sword"
+    },
+    "C": {
+      "item": "minecraft:raw_gold"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "!": {
+      "item": "minecraft:raw_iron"
+    },
+    "W": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "craft-quest:looter_sword",
+    "count": 1
+  }
+}

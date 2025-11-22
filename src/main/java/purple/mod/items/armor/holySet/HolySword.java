@@ -18,7 +18,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import purple.mod.CraftQuest;
+// import purple.mod.CraftQuest;
 import purple.mod.ModItems;
 import purple.mod.management.CraftQuestToolMaterials;
 
@@ -38,7 +38,7 @@ public class HolySword extends SwordItem{
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         this.enemies.add(target.getId());
-        CraftQuest.LOGGER.info("size: "+((Integer) this.enemies.size()).toString());
+        // CraftQuest.LOGGER.info("size: "+((Integer) this.enemies.size()).toString());
         return super.postHit(stack, target, attacker);
     }
     public static float calcCustomDamage(LivingEntity target,float percent){
@@ -61,24 +61,24 @@ public class HolySword extends SwordItem{
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        CraftQuest.LOGGER.info("use start");
+        // CraftQuest.LOGGER.info("use start");
         ItemStack stack  = user.getMainHandStack();
         if (world.isClient()) {
             
 		    return TypedActionResult.pass(stack);
             
 	    }
-        CraftQuest.LOGGER.info("server");
+        // CraftQuest.LOGGER.info("server");
         
         HashSet<Integer> usedIds= new HashSet<Integer>();
         for (int id:this.enemies){
             if (!usedIds.contains(id)){
             Entity enemy = world.getEntityById(id);
             usedIds.add(id);
-            CraftQuest.LOGGER.info("entity"+id);
+            // CraftQuest.LOGGER.info("entity"+id);
             if (enemy != null){
                 LightningEntity bolt = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
-                CraftQuest.LOGGER.info("Summoned lightning");
+                // CraftQuest.LOGGER.info("Summoned lightning");
                 bolt.setPosition(enemy.getPos());
                 world.spawnEntity(bolt);
             }

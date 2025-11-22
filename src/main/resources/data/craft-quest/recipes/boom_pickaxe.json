@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    "#B#",
+    " W ",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "item": "minecraft:stick"
+    },
+    "#": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "item": "craft-quest:boom_pickaxe",
+    "count": 1
+  }
+}

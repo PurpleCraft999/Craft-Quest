@@ -14,14 +14,13 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.world.World;
-import purple.mod.CraftQuest;
+// import purple.mod.CraftQuest;
 
 @Mixin(MobEntity.class)
 public abstract class MobEntityMixin extends LivingEntity {
     
     private MobEntityMixin(EntityType<? extends LivingEntity> entityType, World world){
         super(entityType,world);
-        CraftQuest.LOGGER.info("Started mob mixin");
     }
 
 

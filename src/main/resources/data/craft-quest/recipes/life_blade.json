@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    " ! ",
+    "!I!",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_sword"
+    },
+    "W": {
+      "item": "minecraft:soul_sand"
+    },
+    "!": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "result": {
+    "item": "craft-quest:life_blade",
+    "count": 1
+  }
+}

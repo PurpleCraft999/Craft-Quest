@@ -25,7 +25,6 @@ import net.minecraft.world.World;
 // import purple.mod.CraftQuest;
 import purple.mod.ModItems;
 // import net.minecraft.item.ShieldItem;;
-// import purple.mod.MattMod;
 
 
 
@@ -83,7 +82,6 @@ public class IceBlade extends SwordItem {
                 player.getItemCooldownManager().set(this, maxMeltTime);
             }
             
-            // MattMod.LOGGER.info("ice blade melted");
         } 
         if (getMelted(stack) && !entity.isOnFire() && entity instanceof PlayerEntity user){
             if (!user.getItemCooldownManager().isCoolingDown(this)){

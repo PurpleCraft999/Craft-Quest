@@ -39,7 +39,7 @@ public class LooterSword extends SwordItem{
         if (world.isClient()) return false;
 
         if (target.isDead()){
-            CraftQuest.LOGGER.info("dead");
+            // CraftQuest.LOGGER.info("dead");
             // target.onDeath(target.getRecentDamageSource());
             // MinecraftServer server = target.getServer();
             // DamageSource damageSource = target.getRecentDamageSource();

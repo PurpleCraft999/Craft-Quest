@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#I#",
+        " L "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:rotten_flesh"
+        },
+        "I": {
+            "item": "minecraft:iron_sword"
+        },
+        "L": {
+            "item": "minecraft:lead"
+        }
+    },
+    "result": {
+        "item": "craft-quest:undead_sword",
+        "count": 1
+    }
+}

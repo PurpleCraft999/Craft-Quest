@@ -1,0 +1,20 @@
+{
+  "pattern": [
+    "###",
+    " W ",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:stick"
+    },
+    "#": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "craft-quest:obsidian_pickaxe",
+    "count": 1
+  }
+}

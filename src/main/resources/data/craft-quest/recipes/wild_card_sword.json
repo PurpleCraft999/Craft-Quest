@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    " ! ",
+    "!I!",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "!": {
+      "item": "minecraft:glass_pane"
+    },
+    "W": {
+      "item": "minecraft:brewing_stand"
+    },
+    "I": {
+      "item": "minecraft:diamond_sword"
+    }
+  },
+  "result": {
+    "item": "craft-quest:wild_card_sword",
+    "count": 1
+  }
+}

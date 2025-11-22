@@ -18,7 +18,6 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
-// import purple.mod.MattMod;
 import purple.mod.items.armor.PotionChestplate;
 @Mixin(CraftingResultSlot.class)
 public class CraftingMixin extends Slot {
@@ -38,18 +37,15 @@ public class CraftingMixin extends Slot {
 
     @Inject(method = "onTakeItem", at = @At("HEAD"))
     private void potionChestplate(PlayerEntity player, ItemStack stack, CallbackInfo ci) {
-        // MattMod.LOGGER.info("overide");
 
         if (stack.getItem() instanceof PotionChestplate chestplate){
-            // MattMod.LOGGER.info("chestplate");
             for (int i = 0; i < this.input.size(); i++) {
                 ItemStack ingredient = this.input.getStack(i);
-                // MattMod.LOGGER.info(ingredient.toString());
                 
                 if (ingredient.isOf(Items.POTION)){
                     List<StatusEffectInstance> effects = PotionUtil.getPotionEffects(ingredient);
                     StatusEffectInstance effect = effects.get(0);
-                    StatusEffectInstance finalEffect = new StatusEffectInstance(effect.getEffectType(),2,effect.getAmplifier(),false,true);
+                    StatusEffectInstance finalEffect = new StatusEffectInstance(effect.getEffectType(),2,effect.getAmplifier(),false,false);
                     
                     chestplate.setEffectNbt(stack, finalEffect);
                     break;

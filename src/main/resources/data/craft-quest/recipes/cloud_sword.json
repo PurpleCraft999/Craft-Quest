@@ -1,0 +1,26 @@
+{
+  "pattern": [
+    "PBP",
+    "WIW",
+    "PWP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "I": {
+      "item": "minecraft:diamond_sword"
+    },
+    "P": {
+      "item": "minecraft:glass"
+    },
+    "W": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "craft-quest:cloud_sword",
+    "count": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "pattern": [
+    " B ",
+    "CI!",
+    " W "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:nether_star"
+    },
+    "B": {
+      "item": "minecraft:ghast_tear"
+    },
+    "I": {
+      "item": "minecraft:diamond_sword"
+    },
+    "C": {
+      "item": "minecraft:glass"
+    },
+    "!": {
+      "item": "minecraft:enchanted_golden_apple"
+    }
+  },
+  "result": {
+    "item": "craft-quest:holy_sword",
+    "count": 1
+  }
+}
