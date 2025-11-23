@@ -77,7 +77,14 @@ public class CraftQuest implements ModInitializer {
 			// life blade lifeSteal
 			if (mainHand.isOf(ModItems.LIFE_BLADE)) {
 				attacker.heal(amount * .3f);
-			}
+			} else
+			if (mainHand.isOf(ModItems.VAMPIRE_SWORD)) {
+				attacker.heal(amount * .45f);
+			} else
+
+
+
+
 			if (mainHand.getItem() instanceof HolySword holySword) {
 				RegistryEntry<DamageType> type = target.getWorld().getRegistryManager().get(RegistryKeys.DAMAGE_TYPE)
 						.getEntry(HOLY_DAMAGE).orElseThrow(() -> new IllegalStateException());
