@@ -24,7 +24,7 @@ import purple.mod.management.CraftQuestArmorMaterials;
 public class HolyChestplate extends ArmorItem{
     public static final UUID HEALTH_UUID = UUID.fromString("4d064eb1-3f55-43b6-9a97-f32023b461e8");
     static{
-        CraftQuest.CraftQuestEffectHandler.addAttribute(HEALTH_UUID, EntityAttributes.GENERIC_MAX_HEALTH);
+        CraftQuest.CraftQuestEffectHandler.initAttribute(HEALTH_UUID, EntityAttributes.GENERIC_MAX_HEALTH);
     }
     public HolyChestplate(){
         super(CraftQuestArmorMaterials.HOLY,Type.CHESTPLATE,new FabricItemSettings());

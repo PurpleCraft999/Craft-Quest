@@ -24,7 +24,7 @@ public class SoulSword1000 extends SwordItem{
     final int maxLevel = 10;
     static final UUID uuid= UUID.fromString("da0b7a22-7066-44c6-b361-6cf3a060eb2b");
     static{
-        CraftQuest.CraftQuestEffectHandler.addAttribute(uuid, EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        CraftQuest.CraftQuestEffectHandler.initAttribute(uuid, EntityAttributes.GENERIC_ATTACK_DAMAGE);
     }
     public SoulSword1000(){
         super(CraftQuestToolMaterials.SOUL, 12-5, 1.6f-4, new FabricItemSettings().maxDamage(6482));

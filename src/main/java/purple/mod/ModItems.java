@@ -38,6 +38,7 @@ import purple.mod.items.swords.LifeBlade;
 import purple.mod.items.swords.LooterSword;
 import purple.mod.items.swords.SoulSword1000;
 import purple.mod.items.swords.UndeadSword;
+import purple.mod.items.swords.VampSword;
 import purple.mod.items.swords.WildCardSword;
 public class ModItems {
 
@@ -75,7 +76,7 @@ public class ModItems {
         public static final Item SWORD_OF_SOULS = registerItem(new SoulSword1000(), "sword_of_1000_souls");
         public static final Item ENDER_SWORD = registerItem(new EnderSword(), "ender_sword");
 
-
+        public static final Item VAMPIRE_SWORD = registerItem(new VampSword(), "vampire_sword");
 
 
         public static Item registerItem(Item item, String id) {
@@ -124,6 +125,8 @@ public class ModItems {
                                 .register((itemGroup) -> itemGroup.add(SWORD_OF_SOULS));     
                                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                                    .register((itemGroup) -> itemGroup.add(ENDER_SWORD));
+                                   ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
+                                                .register((itemGroup) -> itemGroup.add(VAMPIRE_SWORD));
                 //adds armor to group
                 ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
                                 .register((itemGroup) -> itemGroup.add(POTION_CHESTPLATE));

@@ -2,16 +2,14 @@ package purple.mod;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
-// import net.minecraft.entity.damage.DamageTypes;
-// import net.minecraft.entity.damage.DamageTypes;
-// import purple.mod.ModItems;
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -41,8 +39,8 @@ public class CraftQuest implements ModInitializer {
 
 	public static final RegistryKey<DamageType> HOLY_DAMAGE = RegistryKey.of(RegistryKeys.DAMAGE_TYPE,
 			new Identifier(MOD_ID, "holy_damage"));
-	
-	public static HashMap<String,@Nullable TeamManager> TEAMS = new HashMap<>();
+
+	public static HashMap<String, @Nullable TeamManager> TEAMS = new HashMap<>();
 	// public RegistryEntry<DamageType> HOLY = RegistryEntry.Directnew
 	// DamageType(MOD_ID+"Holy damage type")
 
@@ -56,15 +54,14 @@ public class CraftQuest implements ModInitializer {
 
 		// this is done so multiple weapons can use their passive effects
 		ServerLivingEntityEvents.ALLOW_DAMAGE.register(this::damageListener);
-		//done for the team tagging
-		ServerPlayConnectionEvents.JOIN.register(this::AutoTeamJoin);
-		
+		// done for the team tagging
+		ServerPlayConnectionEvents.JOIN.register(this::onJoin);
+		ServerPlayerEvents.AFTER_RESPAWN.register(this::respawn);
+
 		ModItems.initialize();
 
 		LOGGER.info("Craft-Quest load finished");
 	}
-
-
 
 	private boolean damageListener(LivingEntity target, DamageSource source, float amount) {
 		if (target.getWorld().isClient()) {
@@ -75,7 +72,6 @@ public class CraftQuest implements ModInitializer {
 			return true;
 		}
 
-		
 		if (source.getAttacker() instanceof LivingEntity attacker) {
 			ItemStack mainHand = attacker.getMainHandStack();
 			// life blade lifeSteal
@@ -106,27 +102,33 @@ public class CraftQuest implements ModInitializer {
 				}
 
 			}
-			
+
 		}
 
 		return true;
 	}
-	boolean AutoTeamJoin (ServerPlayNetworkHandler network, PacketSender sender, MinecraftServer server){
-			
-			ServerPlayerEntity player = network.getPlayer();
-			HashMap<String,TeamManager> tempTeams = new HashMap<>(TEAMS.size());
-			for(String key:TEAMS.keySet()){
-			tempTeams.put(key,TeamManager.makeFriendlyTeam(player, player.getServerWorld(), key));
-			
-			
-			}
-			TEAMS = tempTeams;
-		
-		// UndeadSword undeadSword = (UndeadSword)ModItems.UNDEAD_SWORD;
-		// undeadSword.teamManager =  TeamManager.makeFriendlyTeam(player,player.getServerWorld() , undeadSword.TeamName);
-		// undeadSword.teamManager.addMember(player);
 
+	boolean onJoin(ServerPlayNetworkHandler network, PacketSender sender, MinecraftServer server) {
+
+		ServerPlayerEntity player = network.getPlayer();
+		HashMap<String, TeamManager> tempTeams = new HashMap<>(TEAMS.size());
+		for (String key : TEAMS.keySet()) {
+			tempTeams.put(key, TeamManager.makeFriendlyTeam(player, player.getServerWorld(), key));
+
+		}
+		TEAMS = tempTeams;
+
+		
 
 		return true;
 	}
+
+
+	void respawn(ServerPlayerEntity oldPlayer, ServerPlayerEntity newPlayer, boolean alive){
+
+
+		CraftQuestEffectHandler.setAttribute(newPlayer, oldPlayer.getMaxHealth(), EntityAttributes.GENERIC_MAX_HEALTH);
+	}
+
+
 }

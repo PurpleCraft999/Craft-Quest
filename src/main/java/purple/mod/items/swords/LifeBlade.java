@@ -27,7 +27,7 @@ import purple.mod.ModItems;
 public class LifeBlade extends SwordItem {
     final static UUID healthUUID = UUID.fromString("7020cf19-b501-4515-a244-42dd1da281e6");
     static {
-        CraftQuest.CraftQuestEffectHandler.addAttribute(UUID.fromString("7020cf19-b501-4515-a244-42dd1da281e6"),
+        CraftQuest.CraftQuestEffectHandler.initAttribute(UUID.fromString("7020cf19-b501-4515-a244-42dd1da281e6"),
                 EntityAttributes.GENERIC_MAX_HEALTH);
     }
 

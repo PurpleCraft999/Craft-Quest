@@ -18,9 +18,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier.Operation;
 // import net.minecraft.entity.player.PlayerInventory;
 import purple.mod.CraftQuest;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 import java.util.HashMap;
 
 public class CraftQuestAttributeHandler {
@@ -29,31 +27,40 @@ public class CraftQuestAttributeHandler {
 
 
     }
-    public void createAttribute(LivingEntity entity,double effectStrength,Operation operation,UUID effectUuid){
+    public void addAttribute(LivingEntity entity,double effectStrength,Operation operation,UUID effectUuid){
         
-        EntityAttribute atribute = getAttributeUuid(effectUuid);
-        if (atribute ==null){
+        EntityAttribute attribute = getAttribute(effectUuid);
+        if (attribute ==null){
+            // CraftQuest.LOGGER.warn("Could Not Get Attribute: "+effectUuid);
             return;
         }
-        EntityAttributeInstance atter = entity.getAttributeInstance(atribute);
+        EntityAttributeInstance atter = entity.getAttributeInstance(attribute);
 
         
         if (atter.getModifier(effectUuid) == null) {
             
             
         EntityAttributeModifier mod =   new EntityAttributeModifier(
-                effectUuid, CraftQuest.MOD_ID+atribute.toString()+entity.toString(), effectStrength, operation);
+                effectUuid, CraftQuest.MOD_ID+attribute.toString()+entity.toString(), effectStrength, operation);
         CraftQuest.LOGGER.info("added effect "+effectUuid+" to "+getName(entity));
 
         // atter.addPersistentModifier(mod);
         atter.addTemporaryModifier(mod);
         }
     }
+    public void setAttribute(LivingEntity entity,double effectStrength,EntityAttribute attribute){
+
+
+        EntityAttributeInstance atter = entity.getAttributeInstance(attribute);
+        atter.setBaseValue(effectStrength);
+
+
+    }
 
 
     public void removeAttribute( LivingEntity entity,UUID effectUuid){
 
-        EntityAttribute atribute = getAttributeUuid(effectUuid);
+        EntityAttribute atribute = getAttribute(effectUuid);
 
         if (atribute==null || !entity.getAttributes().hasModifierForAttribute(atribute, effectUuid)){
             return;
@@ -71,7 +78,7 @@ public class CraftQuestAttributeHandler {
     
     }
 
-     public void addAttribute(UUID u,EntityAttribute e){
+     public void initAttribute(UUID u,EntityAttribute e){
         effectuuids.put(u, e);
     }
     public void logic(LivingEntity entity,boolean keepCon,UUID uuid, double effectStrength,Operation operation){
@@ -84,7 +91,7 @@ public class CraftQuestAttributeHandler {
 
             //slot<=8
             if (keepCon){
-                CraftQuest.CraftQuestEffectHandler.createAttribute(entity, effectStrength, operation, uuid);  
+                CraftQuest.CraftQuestEffectHandler.addAttribute(entity, effectStrength, operation, uuid);  
             }  else{
                 // CraftQuest.LOGGER.info("remove effect");
             CraftQuest.CraftQuestEffectHandler.removeAttribute(entity,uuid);
@@ -99,37 +106,14 @@ public class CraftQuestAttributeHandler {
 
 
     @Nullable
-    EntityAttribute getAttributeUuid(UUID uuid){
+    EntityAttribute getAttribute(UUID uuid){
         EntityAttribute atter = effectuuids.get(uuid);
+        
         if (atter==null){
-            CraftQuest.LOGGER.error("could not get uuid"+uuid);
+            CraftQuest.LOGGER.error("Could not get attribute uuid: "+uuid);
             return null;
         }
         return atter;   
     } 
-    
 
-    
-
-    
-
-public static byte[] UUIDToBytes(UUID obj) {
-        try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
-             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
-
-            
-            oos.writeObject(obj);
-            oos.flush();
-
-            
-            return bos.toByteArray();
-        } 
-            
-        catch (IOException e) {
-            return new byte[0];
-        }
-        
-        
-        
-    }
 }
